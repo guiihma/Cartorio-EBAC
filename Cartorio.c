@@ -135,12 +135,12 @@ int main()
             case 1:
             registro(); //chamada de funções
 			break;
-        	
-        	case 2:
-			consulta();
+			
+			case 2:
+			consultar();
 			break;
-    	    
-    	    case 3:
+			
+			case 3:
 			deletar();
 			break;
     	    
