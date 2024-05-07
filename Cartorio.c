@@ -132,17 +132,17 @@ int main()
         
         switch(opcao) //inicio da seleção de menu
         {
-        	case 1:
-        	registro(); //chamada de funções
-        	break;
+            case 1:
+            registro(); //chamada de funções
+            break;
         	
         	case 2:
         	consulta();
     	    break;
     	    
     	    case 3:
-    	    deletar();
-        	break;
+            deletar();
+			break;
     	    
     	    case 4:
     	    printf("Obrigado por ultilizar o sistema!\n");
