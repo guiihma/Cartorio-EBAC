@@ -1,22 +1,22 @@
-#include <stdio.h> //biblioteca de comunica√ß√£o com o √∫su√°rio
-#include <stdlib.h> // biblioteca de aloca√ß√£o de espa√ßo de mem√≥ria
-#include <locale.h> // biblioteca de aloca√ß√µes de texto por regi√£o
-#include <string.h> // biblioteca repons√°vel por cuidar das string
+#include <stdio.h> //biblioteca de comunicaÁ„o com o ˙su·rio
+#include <stdlib.h> // biblioteca de alocaÁ„o de espaÁo de memÛria
+#include <locale.h> // biblioteca de alocaÁıes de texto por regi„o
+#include <string.h> // biblioteca repons·vel por cuidar das string
 
-int registro() //Fun√ß√£o respons√°vel por cadastrar usu√°rios no sitema
+int registro() //FunÁ„o respons·vel por cadastrar usu·rios no sitema
 {
-	// inicio cria√ß√£o de vari√°veis/string
+	// inicio criaÁ„o de vari·veis/string
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
-	// final da cria√ß√£o de vari√°veis/string
+	// final da criaÁ„o de vari·veis/string
 	
 	printf("Digite o CPF a ser cadastrado:");
 	scanf("%s", cpf); //%s refere-se a strings
 	
-	strcpy(arquivo,cpf); //Respons√°vel por copiar os valores da string
+	strcpy(arquivo,cpf); //Respons·vel por copiar os valores da string
 	
 	FILE *file; //cria o arquivo
 	file = fopen(arquivo,"w"); //cria o arquivon e o "w" signifia escrever
@@ -75,12 +75,12 @@ int consulta()
 	
 	if(file==NULL)
 	{
-		printf("N√£o foi possivel, n√£o foi localizado\n");
+		printf("N„o foi possivel, n„o foi localizado\n");
 	}
 	
 	while(fgets(conteudo, 200, file)!=NULL)
 	{
-		printf("\nEssas s√£o as informa√ß√µes do usu√°rio:");
+		printf("\nEssas s„o as informaÁıes do usu·rio:");
 		printf("%s", conteudo);
 		printf("\n\n");
 	}
@@ -92,7 +92,7 @@ int deletar()
 {
 	char cpf[40];
 	
-	printf("Digite o CPF do usu√°rio a ser deletado:");
+	printf("Digite o CPF do usu·rio a ser deletado:");
 	scanf("%s",cpf);
 	
 	remove(cpf);
@@ -102,58 +102,75 @@ int deletar()
 	
 	if(file==NULL)
 	{
-	printf("O usu√°rio n√£o se encontra no sistema!\n");
-	system("pause");
+		printf("O usu·rio n„o se encontra no sistema!\n");
+		system("pause");
 	}
 }
 
 int main()
-{
-    int opcao=0; //Definindo vari√°veis
-    int laco=1;
-    
-    for(laco=1;laco=1;)
-    {	
-    	system("cls");
-    	
-	setlocale(LC_ALL,"Portuguese"); //Definido a linguagem
-   
-        printf("###Cart√≥rio da EBAC###\n\n"); //Inicio do menu
-        printf("Escolha a op√ß√£o desejada do menu:\n\n");
-        printf("\t1 - Registrar nomes\n");
-        printf("\t2 - Consultar nomes\n");
-        printf("\t3 - Deletar nomes\n\n"); 
-        printf("\t4 - Sair do sistema\n\n"); 
-	printf("Op√ß√£o:"); //Fim do menu
-         
-        scanf("%d", &opcao); // Armazenando a escolha do usu√°rio
-    
-        system("cls"); // respons√°vel por limpar a tela
+   {
+        setlocale (LC_ALL, "Portuguese");
         
-        switch(opcao) //inicio da sele√ß√£o de menu
-        {
-        case 1:
-        registro(); //chamada de fun√ß√µes
-	break;
+	    int opcao =0; //Definindo vari·veis
+	    int laco=1;
+	    char senhadigitada[10]="a";
+	    int comparacao;
+
+
+	    printf("###CartÛrio da EBAC###\n\n");
+	    printf("Login de administrador!\n\nDigite sua senha: ");
+	    scanf("%s", senhadigitada);
+	
+	    comparacao = strcmp(senhadigitada, "admin");
+	
+	   if(comparacao == 0)
+	   {
+	   	    system("cls");
+            for(laco=1;laco=1;)
+            {
+	            setlocale(LC_ALL,"Portuguese"); //Definido a linguagem
+   
+                printf("###CartÛrio da EBAC###\n\n"); //Inicio do menu
+                printf("Escolha a opÁ„o desejada do menu:\n\n");
+                printf("\t1 - Registrar nomes\n");
+                printf("\t2 - Consultar nomes\n");
+                printf("\t3 - Deletar nomes\n\n"); 
+                printf("\t4 - Sair do sistema\n\n"); 
+	            printf("OpÁ„o:"); //Fim do menu
+         
+                scanf("%d", &opcao); // Armazenando a escolha do usu·rio
+    
+                system("cls"); // respons·vel por limpar a tela
+        
+                switch(opcao) //inicio da seleÁ„o de menu
+			    {
+                    case 1:
+                    registro(); //chamada de funÁıes
+		            break;
 			
-	case 2:
-	consultar();
-	break;
+		            case 2:
+		            consulta();
+		            break;
 			
-	case 3:
-	deletar();
-	break;
+		            case 3:
+	                deletar();
+		            break;
     	    
-        case 4:
-    	printf("Obrigado por ultilizar o sistema!\n");
-    	return 0;
-    	break;
-    	    
-        default:
-        printf("Essa op√ß√£o n√£o est√° disponivel\n");
-	system("pause");
-    	break;
-	}//fim da sele√ß√£o
-    }   
-}
+    	            case 4:
+    	            printf("Obrigado por ultilizar o sistema!\n");
+	                return 0;
+    	            break;
+		    	    
+                    default:
+                    printf("Essa opÁ„o n„o est· disponivel\n");
+	                system("pause");
+    	            break;
+                } //fim da seleÁ„o
+           }  
+    	}
+	    else
+	    printf("Senha incorreta!");
+    }
+           
+
 
